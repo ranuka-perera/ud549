@@ -24,3 +24,17 @@ describe('Address Book', function() {
         expect(addressBook.getContact(0)).not.toBeDefined();
     });
 });
+
+describe('Async Address Book', function() {
+    var addressbook = new AddressBook();
+    beforeEach(function(done) {
+        addressbook.getInitialContacts(function() {
+            done();
+        });
+    });
+    
+    it('should grab initial contacts', function(done) {
+        expect(addressbook.initialComplete).toBe(true);
+        done();
+    })
+})
